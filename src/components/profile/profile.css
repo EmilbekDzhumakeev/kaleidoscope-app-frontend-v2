@@ -1,0 +1,30 @@
+.profile {
+    min-height: 400px;
+    width: 500px;
+    padding: 25px;
+    margin: 25px;
+    background-color: var(--theme-light);
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
+}
+
+.profile input[type='text'],
+.profile textarea {
+    width: 100%;
+    font-size: 1.1em;
+    color: var(--theme-medium);
+    margin-bottom: 25px;
+    padding-left: 10px;
+    border: none;
+    border: 1px solid var(--theme-dark);
+    border-radius: 3px;
+    box-shadow: inset 1px 1px 7px #666666;
+}
+
+.profile input[type='text'] {
+    height: 35px;
+}
+
+.profile textarea {
+    padding-top: 10px;
+}

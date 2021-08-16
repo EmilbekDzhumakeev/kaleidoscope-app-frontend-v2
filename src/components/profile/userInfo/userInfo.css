@@ -1,0 +1,9 @@
+.user-info {
+   margin: auto;
+   padding: 5px;
+   color: var(--theme-dark);
+}
+
+.user-info h2 {
+   color: var(--theme-dark);
+}

@@ -1,0 +1,15 @@
+.friends-all-users-list {
+    height: 700px;
+    width: 400px;
+    padding: 10px;
+    border: 7px solid var(--theme-light);
+    margin: 25px 50px;
+    background-color: var(--theme-medium);
+    border-radius: 10px;
+}
+
+.friends-all-users-list .toggle-button {
+   width: 80%;
+   font-weight: bold;
+   font-size: 1.3em;
+}

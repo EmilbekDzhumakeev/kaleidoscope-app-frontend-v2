@@ -1,0 +1,59 @@
+.banner {
+   text-align: left;
+   width: 100%;
+   color: var(--theme-dark);
+   padding: 5px 15px;
+   display:flex;
+   width: 100%;
+   justify-content: space-between;
+}
+
+.banner > div {
+   min-width: 200px;
+   margin-right: 50px;
+   display: flex;
+
+}
+
+.banner > div h1, .banner > div p {
+   padding: 10px 0 0 5px;
+   line-height: .9em;
+}
+
+.banner > div p {
+   margin-left: 5px;
+   font-style: italic;
+}
+
+
+.banner img {
+width: 75px;
+padding: 0;
+margin: 0;
+}
+
+.banner .user-info {
+   font-size: 1.2em;
+   margin-top: 10px;
+   font-weight: bold;
+}
+
+.banner h1 {
+   font-family: 'Times New Roman', Times, serif;
+   color: var(--theme-dark);
+   font-size: 2.5em;
+}
+
+.banner h1.span {
+   color: var(--theme-medium);
+}
+
+.banner .friend-request-status {
+   margin: 10px;
+   width: 150px;
+}
+
+.friend-request-status .button-md {
+   width: 100%;
+   text-align: right;
+}

@@ -1,0 +1,44 @@
+.friends-list {
+   padding: 5px;
+   margin: 10px;
+   height: 600px;
+   text-align: left;
+   overflow: scroll;
+   overflow-x: hidden;
+   -ms-overflow-style: none; /* IE and Edge */
+   scrollbar-width: none; /* Firefox */
+}
+
+.friends-list::-webkit-scrollbar {
+  display: none; /* for Chrome, Safari, and Opera */
+}
+
+.friends-list ul li {
+   display: flex;
+   padding: 5px;
+   width: 390px;
+   line-height: 50px;
+   height: 55px;
+   font-size: 1.3em;
+   overflow: hidden;
+   cursor: pointer;
+
+}
+
+.friends-list ul li:hover {
+   background-color: var(--theme-dark);
+
+}
+
+.friends-list ul {
+   margin-top: 25px;
+}
+
+.friends-list .avatar-inline {
+   margin-right: 25px;
+}
+
+.friend-name:hover {
+   text-decoration: underline;
+}
+

@@ -1,0 +1,12 @@
+.main {
+   margin: 0;
+}
+
+.main > div {
+   display: flex;
+   margin-top: 150px;
+   width: 100%;
+   flex-direction: row;
+   justify-content: space-around;
+   flex-wrap: wrap;
+}

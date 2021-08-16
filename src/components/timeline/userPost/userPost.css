@@ -1,0 +1,31 @@
+.user-post {
+    padding: 5px;
+    min-height: 30px;
+    margin-bottom: 10px;
+    color: var(--theme-dark);
+    border-radius: 3px;
+    background-color: inherit;
+    font-size: 1.2em;
+    line-height: 1.2em;
+    text-align: left;
+    opacity: inherit;
+}
+
+.user-post p span {
+    color: var(--text-dark);
+    font-weight: bold;
+}
+
+.user-post > div {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.user-post > div button {
+    margin: 0;
+    margin-left: 10px;
+}
+
+.user-post p {
+    margin: 10px;
+}

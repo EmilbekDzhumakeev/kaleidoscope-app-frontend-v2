@@ -1,0 +1,40 @@
+.app-login {
+    padding: 25px;
+}
+
+.app-login input[type='text'],
+.app-login input[type='email'],
+.app-login input[type='password'] {
+    width: 100%;
+    margin-bottom: 25px;
+    height: 35px;
+    color: var(--theme-medium);
+    font-size: 1.1em;
+    padding-left: 10px;
+    border: none;
+    border: 1px solid var(--theme-dark);
+    border-radius: 3px;
+    box-shadow: inset 1px 1px 7px #666666;
+}
+
+.app-login .login-form {
+    width: 400px;
+    border: 3px solid var(--theme-light);
+    padding: 25px;
+    margin-top: 200px;
+    border-radius: 10px;
+    background-color: var(--theme-medium);
+    box-shadow: 2px 2px 5px #666666;
+}
+
+.app-login .login-form .login-action-bar {
+    margin-top: 100px;
+}
+
+.login-form h3 {
+    margin-bottom: 25px;
+}
+
+.App {
+   background-color: #f4f4f4;
+}

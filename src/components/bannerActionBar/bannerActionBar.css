@@ -1,0 +1,32 @@
+.banner-action-bar {
+    display: flex;
+    margin-top: 10px;
+}
+
+
+.banner-action-bar div.button-md,
+.banner-action-bar div.button-md:hover {
+    min-width: 200px;
+    display: flex;
+    background-color: var(--theme-dark);
+    color: var(--theme-light);
+}
+
+.banner-action-bar .request-pending {
+    border-radius: 10px;
+    max-width: 50px;
+    min-width: 25px;
+    padding: 1px 5px;
+    background-color: var(--theme-light);
+    color: var(--theme-dark);
+}
+
+.banner-action-bar .request-text {
+    width: 150px;
+}
+
+.banner-action-bar .login img {
+    width: 48px;
+    padding: 7px 10px 7px 10px;
+
+}

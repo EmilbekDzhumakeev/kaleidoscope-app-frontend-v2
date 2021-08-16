@@ -1,0 +1,10 @@
+.footer {
+position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+    width: 100%;
+    min-height: 75px;
+    color: var(--text-light);
+    background-color: var(--theme-dark);
+}

@@ -1,0 +1,97 @@
+
+.App {
+    margin: 0;
+    text-align: center;
+    min-height: 900px;
+    min-width: 600px;
+}
+
+ul li {
+   list-style: none;
+   color: var(--theme-light);
+}
+
+body {
+    background-color: #999999;
+    /* background-image: url('./images/weave-background-subdued2.png'); */
+}
+.content {
+   height: 100%;
+    text-align: center;
+}
+
+.content > div {
+    display: flex;
+    margin-top: 25px;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+h2,
+h3,
+h4 {
+    text-align: center;
+}
+
+h3,
+h4 {
+    text-transform: uppercase;
+    color: var(--theme-dark);
+    font-weight: bold;
+}
+
+
+
+.button-lg,
+.button-md,
+.button-sm {
+    height: 38px;
+    min-width: 125px;
+    margin: 10px;
+    font-size: 1.2em;
+    padding: 2px 10px;
+    background-color: inherit;
+    border: 2px solid var(--theme-dark);
+    color: var(--theme-dark);
+    border-radius: 30px;
+    text-align: center;
+}
+
+.button-lg:hover,
+.button-md:hover,
+.button-sm:hover {
+    background-color: var(--theme-dark);
+    color: var(--theme-medium);
+    font-weight: bold;
+}
+
+
+.button-md {
+   height: 35px;
+   min-width: 75px;
+   font-size: 1.1em;
+   padding: 5px 10px;
+
+}
+
+.button-sm {
+   height: 25px;
+   min-width: 60px;
+   font-size: .6em;
+   padding: 1px 10px;
+   border-radius: 15px;
+
+}
+
+.avatar-inline {
+   height: 50px;
+   width: 50px;
+   padding: 5px;
+}
+
+.avatar-inline img {
+   width: 100%;
+}
+

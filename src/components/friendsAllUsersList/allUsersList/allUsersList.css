@@ -1,0 +1,43 @@
+.all-users-list {
+   height: 600px;
+   padding: 5px;
+   margin: 10px;
+   text-align: left;
+   overflow: scroll;
+   overflow-x: hidden;
+   -ms-overflow-style: none; /* IE and Edge */
+   scrollbar-width: none; /* Firefox */
+}
+
+.all-users-list::-webkit-scrollbar {
+  display: none; /* for Chrome, Safari, and Opera */
+}
+
+.all-users-list ul li {
+   display: flex;
+   padding: 5px;
+   width: 390px;
+   line-height: 50px;
+   height: 55px;
+   font-size: 1.3em;
+   overflow: hidden;
+   cursor: pointer;
+
+}
+
+.all-users-list ul li:hover {
+   background-color: var(--theme-dark);
+
+}
+
+.all-users-list ul {
+   margin-top: 25px;
+}
+
+.all-users-list .avatar-inline {
+   margin-right: 25px;
+}
+
+.user-name:hover {
+   text-decoration: underline;
+}

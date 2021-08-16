@@ -1,0 +1,11 @@
+.header {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;;
+    padding: 5px;
+    background-color: var(--theme-medium);
+    box-shadow: 3px 3px 7px var(--theme-dark);
+    z-index: 100;
+}
+

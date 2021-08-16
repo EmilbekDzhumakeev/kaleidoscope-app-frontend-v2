@@ -1,0 +1,35 @@
+.message-bar {
+    position: fixed;
+    display: flex;
+    width: 100%;
+    top: 110px;
+    left: 0;
+    justify-content: space-between;
+    font-size: 1.3em;
+    background-color: #666666;
+    color: var(--theme-light);
+    padding: 0;
+    margin: 0;
+}
+
+.message-bar div {
+    margin-left: 25px;
+    margin-right: 10px;
+}
+
+.message-bar .cancel-icon {
+    font-size: 1.3em;
+    margin-top: 5px;
+    color: var(--theme-medium);
+    width: 1.5%;
+}
+
+.message-bar .cancel-icon:hover {
+    color: var(--theme-light);
+}
+
+.message-bar .message-text {
+   margin: 10px 0 0 60px;
+    text-align: center;
+    width: 98%;
+}
