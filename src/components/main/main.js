@@ -18,7 +18,7 @@ const Main = (props) => {
             </div>
             <div>
                
-               <ToursList changeUser={props.changeUser} users={props.users} loggedInUser={props.loggedInUser} currentUser={props.currentUser} tours={props.tours} setTours={props.setTours} />
+               <ToursList changeUser={props.changeUser} users={props.users} loggedInUser={props.loggedInUser} currentUser={props.currentUser} tours={props.tours} setTours={props.setTours} bookedTours={props.bookedTours} setBookedTours={props.setBookedTours}/>
                
                </div>
          </div>

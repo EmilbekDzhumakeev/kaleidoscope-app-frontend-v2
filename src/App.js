@@ -12,6 +12,7 @@ import './App.css'
 
 const App = () => {
    const [tours, setTours] = useState(null);
+   const [bookedTours, setBookedTours] = useState(null);
    const [users, setUsers] = useState(null);
    const [newUser, setNewUser] = useState({
       name: '',
@@ -47,7 +48,11 @@ const App = () => {
    
    const getTours = async (currentUser) => {
       await axios.get(apiTourPath).then((res) => { setTours(res.data) }).catch((err) => { console.log(err); });
-}
+} 
+
+const getBookedTours = async (currentUser) => {
+   await axios.get(apiBookedTourPath).then((res) => { setBookedTours(res.data) }).catch((err) => { console.log(err); });
+} 
 
    const postNewUser = async (newUser) => {
       await axios.post(apiUserPath, newUser).then((res) => { console.log(res.data); }).catch(err => {
@@ -99,6 +104,11 @@ const App = () => {
    useEffect(() => {
       getTours(currentUser); 
       console.log('gettours')
+   }, [currentUser]) 
+
+   useEffect(() => {
+      getBookedTours(currentUser); 
+      console.log('getBookedtours')
    }, [currentUser]) 
 
    /**********************************************************
@@ -212,7 +222,7 @@ const App = () => {
             {!loggedIn && <AppLogin newUser={newUser} handleUserChange={handleUserChange} handleUserSubmit={handleUserSubmit}
                register={register} setRegister={setRegister} setLoggedIn={setLoggedIn} />}
 
-            {(loggedIn && currentUser) && <Main changeUser={changeUser} users={users} loggedInUser={loggedInUser} currentUser={currentUser} editProfile={editProfile} handleEditProfileChange={handleEditProfileChange} handleEditProfileSubmit={handleEditProfileSubmit} handleNewPostingChange={handleNewPostingChange} handleNewPostingSubmit={handleNewPostingSubmit} newPosting={newPosting} setNewPosting={setNewPosting} postings={postings} setPostings={setPostings} tours={tours} setTours={setTours} />}
+            {(loggedIn && currentUser) && <Main changeUser={changeUser} users={users} loggedInUser={loggedInUser} currentUser={currentUser} editProfile={editProfile} handleEditProfileChange={handleEditProfileChange} handleEditProfileSubmit={handleEditProfileSubmit} handleNewPostingChange={handleNewPostingChange} handleNewPostingSubmit={handleNewPostingSubmit} newPosting={newPosting} setNewPosting={setNewPosting} postings={postings} setPostings={setPostings} tours={tours} setTours={setTours} bookedTours={bookedTours} setBookedTours={setBookedTours}/>}
          </div>
          {/* <Footer /> */}
       </div>
