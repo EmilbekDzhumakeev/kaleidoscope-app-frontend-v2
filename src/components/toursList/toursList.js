@@ -1,9 +1,9 @@
 import  {useState} from 'react'
 import FriendsList from './friendsList/friendsList'; 
 import AllUsersList from './allUsersList/allUsersList'
-import './friendsAllUsersList.css';
+import './toursList.css';
 
-const FriendsAllUsersList = (props) => { 
+const ToursList = (props) => { 
    const [toggle, setToggle] = useState(true);
    
    const changeDisplay = () => {
@@ -22,4 +22,4 @@ const FriendsAllUsersList = (props) => {
    )
 }
 
-export default FriendsAllUsersList
+export default ToursList

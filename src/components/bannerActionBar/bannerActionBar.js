@@ -8,9 +8,9 @@ const BannerActionBar = (props) => {
       <div className="banner-action-bar">
          <div className="user-info">Hi, {props.loggedInUser.name.split(' ')[0]}</div>
          <div className='button-md'>
-            <div className='request-pending'>{props.loggedInUser.friendRequestIn.length}</div>
+      
             <div className='request-text'>Friend Request</div>
-            {props.loggedInUser.email !== props.currentUser.email && <div><AddCircleOutlineIcon /></div>}
+            {props.loggedInUser.email !== props.currentUser.email }
          </div>
 
          <div className="login"><img onClick={props.handleLoginAvatarClick} src={loginAvatar}
