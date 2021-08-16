@@ -8,7 +8,7 @@ const Banner = (props) => {
       <div className='banner'>
          <div>
             <div><img src={logo} alt="" onClick={()=>{props.setCurrentUser(props.loggedInUser)}} /></div>
-            <div><h1>Kaleidoscope<span>Tour</span></h1><p>Travel Because Money Returns Time Doesn't!</p></div>
+            <div><h1>Kaleidoscope<span>Tour</span></h1><p>TRAVEL BECAUSE MONEY RETURNS, TIME DOESN'T!</p></div>
          </div>
          <div>
             {(props.loggedIn && props.loggedInUser && props.currentUser) && <BannerActionBar loggedIn={props.loggedIn} setLoggedIn={props.setLoggedIn} handleLoginAvatarClick={props.handleLoginAvatarClick} loggedInUser={props.loggedInUser} currentUser={props.currentUser} /> }

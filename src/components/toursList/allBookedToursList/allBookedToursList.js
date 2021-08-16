@@ -1,10 +1,10 @@
 import React from 'react';
-import './bookedToursList.css';
+import './allBookedToursList.css';
 import avatarPlaceholder from '../../../images/avatar-placeholder.png' 
 
 const BookedToursList = (props) => { 
  
-   const bookedTours = props.currentUser.friends.map((bookedTour, index) => {
+   const bookedTours = props.tours.map((bookedTour, index) => {
       return (
          <li key={index}>
          <div className="avatar-inline"><img src={avatarPlaceholder} alt=''></img></div>

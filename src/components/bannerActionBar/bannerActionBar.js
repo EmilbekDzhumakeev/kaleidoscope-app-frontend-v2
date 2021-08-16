@@ -9,12 +9,12 @@ const BannerActionBar = (props) => {
          <div className="user-info">Hi, {props.loggedInUser.name.split(' ')[0]}</div>
          <div className='button-md'>
       
-            <div className='request-text'>Friend Request</div>
+            <div className='request-text'></div>
             {props.loggedInUser.email !== props.currentUser.email }
          </div>
 
          <div className="login"><img onClick={props.handleLoginAvatarClick} src={loginAvatar}
-            alt="" /></div>
+            alt="Log Out" /></div>
       </div>
    )
 }

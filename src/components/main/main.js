@@ -1,7 +1,7 @@
 import React from 'react'
 import Profile from '../profile/profile'
 import Timeline from '../timeline/timeline'
-import FriendsAllUsersList from '../toursList/toursList';
+import ToursList from '../toursList/toursList';
 import './main.css'
 
 
@@ -17,9 +17,9 @@ const Main = (props) => {
                   */}
             </div>
             <div>
-               {/*
-               <FriendsAllUsersList changeUser={props.changeUser} users={props.users} loggedInUser={props.loggedInUser} currentUser={props.currentUser} friends={props.friends} setFriends={props.setFriends}/>
-               */}
+               
+               <ToursList changeUser={props.changeUser} users={props.users} loggedInUser={props.loggedInUser} currentUser={props.currentUser} tours={props.tours} setTours={props.setTours} />
+               
                </div>
          </div>
       </div>
