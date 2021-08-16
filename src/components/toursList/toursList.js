@@ -1,6 +1,6 @@
 import  {useState} from 'react'
-import FriendsList from './friendsList/friendsList'; 
-import AllUsersList from './allUsersList/allUsersList'
+import BookedToursList from './allBookedToursList/allBookedToursList'; 
+import AllToursList from './allToursList/allToursList'
 import './toursList.css';
 
 const ToursList = (props) => { 
@@ -15,8 +15,8 @@ const ToursList = (props) => {
    return (
       <div className='friends-all-users-list'> 
       <button className="button-md toggle-button" onClick={() => { changeDisplay()}}>{buttonText}</button>
-        {toggle && <FriendsList currentUser={props.currentUser} setFriends={props.setFriends} changeUser={props.changeUser} friends={props.friends} />}
-        {!toggle && <AllUsersList currentUser={props.currentUser} changeUser={props.changeUser} users={props.users} />}
+        {toggle && <BookedToursList currentUser={props.currentUser} setFriends={props.setFriends} changeUser={props.changeUser} friends={props.friends} />}
+        {!toggle && <AllToursList currentUser={props.currentUser} changeUser={props.changeUser} users={props.users} />}
        
       </div>
    )

@@ -1,25 +1,25 @@
 import React from 'react';
-import './friendsList.css';
+import './bookedToursList.css';
 import avatarPlaceholder from '../../../images/avatar-placeholder.png' 
 
-const FriendsList = (props) => { 
+const BookedToursList = (props) => { 
  
-   const friends = props.currentUser.friends.map((friend, index) => {
+   const bookedTours = props.currentUser.friends.map((bookedTour, index) => {
       return (
          <li key={index}>
          <div className="avatar-inline"><img src={avatarPlaceholder} alt=''></img></div>
-         <div className='friend-name'>{friend.bff}</div>
+         <div className='friend-name'>{bookedTour.tourName}</div>
       </li>
       )
    })
    return (
       <div className='friends-list'>
-         <h3>Friends List</h3>
+         <h3>Booked Tour List</h3>
          <ul>
-            {friends}
+            {bookedTours}
          </ul>
       </div>
    )
 }
 
-export default FriendsList;
+export default BookedToursList;

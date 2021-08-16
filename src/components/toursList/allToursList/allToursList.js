@@ -1,8 +1,8 @@
 import React from 'react';
 import avatarPlaceholder from '../../../images/avatar-placeholder.png'
-import './allUsersList.css';
+import './allToursList.css';
 
-const AllUsersList = (props) => {
+const AllToursList = (props) => {
    
 
    // const [tempUser, setTempUser] = useState(null); 
@@ -12,24 +12,24 @@ const AllUsersList = (props) => {
    // }
 //////////////////////////////////////////////////////
 
-   const allUsers = props.users.map((user, index) => {
+   const allTours = props.tours.map((tour, index) => {
       return (
          <li key={index}>
             {/* <div className="avatar-inline"><img src={user.avatar} alt=''></img></div> */}
             <div className="avatar-inline"><img src={avatarPlaceholder} alt=''></img></div>
 
-         <div onClick={() => { props.changeUser(user)}}><div className='user-name'>{user.name}</div></div>
+         <div onClick={() => { props.changeUser(tour)}}><div className='user-name'>{tour.tTitle}</div></div>
       </li>
       )
    })
    return (
       <div className='all-users-list'>
-         <h3>All Users List</h3>
+         <h3>All Tours List</h3>
          <ul>
-            {allUsers} 
+            {allTours} 
          </ul>
       </div>
    )
 }
 
-export default AllUsersList;
+export default AllToursList;
