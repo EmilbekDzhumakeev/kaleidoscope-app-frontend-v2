@@ -6,29 +6,33 @@ import MessageBar from './components/messageBar/messageBar';
 import axios from 'axios';
 import './App.css'
 
-
-
+/**************************************************** */
+// Remove after production state is created (For demo)
+import myTour from './_demoData/myTour.js'
 /**************************************************** */
 
 const App = () => {
    const [tours, setTours] = useState(null);
    const [bookedTours, setBookedTours] = useState(null);
+   const [currentTour, setCurrentTour] = useState(myTour);
+
    const [users, setUsers] = useState(null);
    const [newUser, setNewUser] = useState({
       name: '',
       email: '',
       password: '',
    })
-
    const [loggedInUser, setLoggedInUser] = useState(null);
    const [currentUser, setCurrentUser] = useState(null);
    const [newUserData, setNewUserData] = useState(null);
+
    const [logonData, setlogonData] = useState(null);
    const [loggedIn, setLoggedIn] = useState(false);
    const [register, setRegister] = useState(false);
    const [messageText, setMessageText] = useState('');
    const [showMessageBar, setShowMessageBar] = useState(false);
    const [newPosting, setNewPosting] = useState('');
+   
    const [postings, setPostings] = useState([]);
    const [editProfile, setEditProfile] = useState({ name: '', aboutMe: '' });
 
@@ -69,8 +73,8 @@ const getBookedTours = async (currentUser) => {
       await axios.post(`${apiUserPath}/login`, email).then((res) => { setLoggedInUser(res.data); setCurrentUser(res.data); }).catch((err) => { console.log(err); });
    }
 
-   const getPostings = async (currentUser) => {
-      await axios.get(`${apiUserPath}/${currentUser}`).then((res) => { setPostings(res.data) }).catch((err) => { console.log(err); });
+   const getPostings = async (currentTour) => {
+      await axios.get(`${apiTourPath}/${currentTour._id}/comments`).then((res) => { setPostings(res.data) }).catch((err) => { console.log(err); });
    }
 
    //add New Posting
@@ -95,11 +99,11 @@ const getBookedTours = async (currentUser) => {
       postUserLogin(logonData);
    }, [logonData])
 
-   // get User Posting Feed 
+   // get Tour Posting Feed 
    useEffect(() => {
-      getPostings(currentUser);
+      getPostings(currentTour);
       console.log('getPostings');
-   }, [currentUser])
+   }, [currentTour])
  /////////////// get User Friens ??????????????????????
    useEffect(() => {
       getTours(currentUser); 
@@ -161,6 +165,11 @@ const getBookedTours = async (currentUser) => {
       setCurrentUser(user)
       console.log('tempUser', currentUser)
    }
+    
+   const changeTour = (tour) => {
+      setCurrentTour(tour)
+      console.log('tempTour', currentTour)
+   }
 
    //handle new posting 
    const handleNewPostingSubmit = (event) => {
@@ -170,16 +179,16 @@ const getBookedTours = async (currentUser) => {
          author: loggedInUser.name,
          likes: 0
       }
-      postNewPosting(currentUser._id, posting);
+      postNewPosting(currentTour._id, posting);
       console.log('New Post:', posting);
       console.log('user id', loggedInUser._id)
 
       // Ally, state variables are immunable. if you use the push method on them, changing will not trigged React to re-render the DOM. Thus no screen updates after change
       // const allPosts = [...postings];
       // allPosts.push(posting);
-      const newCurrentUser = { ...currentUser };
-      newCurrentUser.posts.push(posting);
-      setCurrentUser(newCurrentUser);
+      const newCurrentTour = { ...currentTour };
+      newCurrentTour.posts.push(posting);
+      setCurrentTour(newCurrentTour);
       setNewPosting('');
    }
 
@@ -212,7 +221,8 @@ const getBookedTours = async (currentUser) => {
    console.log(users);
    console.log('current user: ', currentUser);
    console.log('loggedInUser: ', loggedInUser);
-
+   console.log('currentTour: ', currentTour);
+   console.log('currentTourcomments: ', currentTour.comments);
 
    return (
       <div id='app' className='App'>
@@ -222,7 +232,7 @@ const getBookedTours = async (currentUser) => {
             {!loggedIn && <AppLogin newUser={newUser} handleUserChange={handleUserChange} handleUserSubmit={handleUserSubmit}
                register={register} setRegister={setRegister} setLoggedIn={setLoggedIn} />}
 
-            {(loggedIn && currentUser) && <Main changeUser={changeUser} users={users} loggedInUser={loggedInUser} currentUser={currentUser} editProfile={editProfile} handleEditProfileChange={handleEditProfileChange} handleEditProfileSubmit={handleEditProfileSubmit} handleNewPostingChange={handleNewPostingChange} handleNewPostingSubmit={handleNewPostingSubmit} newPosting={newPosting} setNewPosting={setNewPosting} postings={postings} setPostings={setPostings} tours={tours} setTours={setTours} bookedTours={bookedTours} setBookedTours={setBookedTours}/>}
+            {(loggedIn && currentUser )  && <Main changeTour={changeTour} changeUser={changeUser} users={users} loggedInUser={loggedInUser} currentUser={currentUser} editProfile={editProfile} handleEditProfileChange={handleEditProfileChange} handleEditProfileSubmit={handleEditProfileSubmit} handleNewPostingChange={handleNewPostingChange} handleNewPostingSubmit={handleNewPostingSubmit} newPosting={newPosting} setNewPosting={setNewPosting} postings={postings} setPostings={setPostings} tours={tours} setTours={setTours} bookedTours={bookedTours} setBookedTours={setBookedTours} currentTour={currentTour} setCurrentTour={setCurrentTour}/>}
          </div>
          {/* <Footer /> */}
       </div>

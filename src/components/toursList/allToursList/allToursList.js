@@ -18,7 +18,7 @@ const AllToursList = (props) => {
             {/* <div className="avatar-inline"><img src={user.avatar} alt=''></img></div> */}
             <div className="avatar-inline"><img src={avatarPlaceholder} alt=''></img></div>
 
-         <div onClick={() => { props.changeUser(tour)}}><div className='user-name'>{tour.tTitle}</div></div>
+         <div onClick={() => { props.changeTour(tour)}}><div className='user-name'>{tour.tTitle}</div></div>
       </li>
       )
    })
