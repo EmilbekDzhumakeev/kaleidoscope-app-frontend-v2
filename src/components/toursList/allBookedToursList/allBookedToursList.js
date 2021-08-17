@@ -4,11 +4,11 @@ import avatarPlaceholder from '../../../images/avatar-placeholder.png'
 
 const BookedToursList = (props) => { 
  
-   const bookedTours = props.currentUser.bookedTours.map((bookedTour, index) => {
+   const bookedTours = props.bookedTours.map((bookedTour, index) => {
       return (
          <li key={index}>
          <div className="avatar-inline"><img src={avatarPlaceholder} alt=''></img></div>
-         <div className='friend-name'>{bookedTour}</div>
+         <div className='friend-name'>{bookedTour.tourName}</div>
       </li>
       )
    })
