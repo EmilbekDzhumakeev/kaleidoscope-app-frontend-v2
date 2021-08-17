@@ -13,9 +13,9 @@ const Main = (props) => {
                <Profile currentUser={props.currentUser} loggedInUser={props.loggedInUser} editProfile={props.editProfile} handleEditProfileChange={props.handleEditProfileChange} handleEditProfileSubmit={props.handleEditProfileSubmit} />
             </div>
             <div>
-         
+        {/*
           <Timeline postings={props.postings} setPostings={props.setPostings} newPosting={props.newPosting} setNewPosting={props.setNewPosting} handleNewPostingChange={props.handleNewPostingChange} handleNewPostingSubmit={props.handleNewPostingSubmit} currentUser={props.currentUser} loggedInUser={props.loggedInUser} currentTour={props.currentTour} setCurrentTour={props.setCurrentTour}/> 
-   
+        */}
             </div>
             <div>
               
