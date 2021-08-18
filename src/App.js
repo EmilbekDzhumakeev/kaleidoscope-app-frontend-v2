@@ -175,9 +175,11 @@ const getBookedTours = async (currentUser) => {
    const handleNewPostingSubmit = (event) => {
       event.preventDefault();
       const posting = {
-         post: newPosting,
+         feedback: newPosting,
          author: loggedInUser.name,
-         likes: 0
+         likes: 0 ,
+         dislikes: 0, 
+         dateAdded: Date.now
       }
       postNewPosting(currentTour._id, posting);
       console.log('New Post:', posting);
@@ -187,7 +189,7 @@ const getBookedTours = async (currentUser) => {
       // const allPosts = [...postings];
       // allPosts.push(posting);
       const newCurrentTour = { ...currentTour };
-      newCurrentTour.posts.push(posting);
+      newCurrentTour.comments.push(posting);
       setCurrentTour(newCurrentTour);
       setNewPosting('');
    }
