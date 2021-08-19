@@ -78,8 +78,8 @@ const getBookedTours = async (currentUser) => {
    }
 
    //add New Posting
-   const postNewPosting = async (id, data) => {
-      await axios.post(`${apiUserPath}/${id}/post`, data).then((res) => (res.data)).catch((err) => console.log(err));
+   const postNewPosting = async (currentTour, data) => {
+      await axios.post(`${apiTourPath}/${currentTour._id}/comment`, data).then((res) => (res.data)).catch((err) => console.log(err));
    }
 
    /**********************************************************
@@ -103,7 +103,12 @@ const getBookedTours = async (currentUser) => {
    useEffect(() => {
       getPostings(currentTour);
       console.log('getPostings');
-   }, [currentTour])
+   }, [currentTour]) 
+
+   useEffect(() => {
+      postNewPosting(newPosting);
+   }, [newPosting])
+   
  /////////////// get User Friens ??????????????????????
    useEffect(() => {
       getTours(currentUser); 
@@ -114,6 +119,7 @@ const getBookedTours = async (currentUser) => {
       getBookedTours(currentUser); 
       console.log('getBookedtours')
    }, [currentUser]) 
+ 
 
    /**********************************************************
    *  EVENT HANDLERS
@@ -175,14 +181,12 @@ const getBookedTours = async (currentUser) => {
    const handleNewPostingSubmit = (event) => {
       event.preventDefault();
       const posting = {
-         feedback: newPosting,
          author: loggedInUser.name,
-         likes: 0 ,
-         dislikes: 0, 
-         dateAdded: Date.now
+         feedback: newPosting,
       }
-      postNewPosting(currentTour._id, posting);
+      postNewPosting(currentTour, posting);
       console.log('New Post:', posting);
+      console.log('CurrentTour:', currentTour)
       console.log('user id', loggedInUser._id)
 
       // Ally, state variables are immunable. if you use the push method on them, changing will not trigged React to re-render the DOM. Thus no screen updates after change
