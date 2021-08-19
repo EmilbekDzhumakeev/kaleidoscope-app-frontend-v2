@@ -14,7 +14,9 @@ const MessageBar = (props) => {
    return (
       <div className='timeline'>
          <h3>Messages</h3> 
-         <h3>Booked Tour: {props.currentTour.tourName}</h3>
+         <h2>Booked Tour: {props.currentTour.tourName}</h2> 
+         <p2>Description: {props.currentTour.description}</p2> 
+        
          <div> 
             {/*
             <CreateMessage newPosting={props.newPosting} setNewPosting={props.setNewPosting} postings={props.postings} setPostings={props.setPostings} handleNewPostingChange={props.handleNewPostingChange} handleNewPostingSubmit={props.handleNewPostingSubmit} />
