@@ -15,7 +15,7 @@ const ToursList = (props) => {
    return (
       <div className='friends-all-users-list'> 
       <button className="button-md toggle-button" onClick={() => { changeDisplay()}}>{buttonText}</button>
-        {toggle && <BookedToursList currentUser={props.currentUser} changeTour={props.changeTour} changeUser={props.changeUser} bookedTours={props.bookedTours} setBookedTours={props.setBookedTours} />}
+        {toggle && (props.bookedTours && <BookedToursList currentUser={props.currentUser} changeTour={props.changeTour} changeUser={props.changeUser} bookedTours={props.bookedTours} setBookedTours={props.setBookedTours}/> )}
         {!toggle && <AllToursList currentUser={props.currentUser} changeTour={props.changeTour} users={props.users} tours={props.tours} setTours={props.setTours}  />}
        
       </div>

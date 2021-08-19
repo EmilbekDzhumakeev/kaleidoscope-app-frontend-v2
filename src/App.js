@@ -54,7 +54,7 @@ const App = () => {
       await axios.get(apiTourPath).then((res) => { setTours(res.data) }).catch((err) => { console.log(err); });
 } 
 
-const getBookedTours = async (currentUser) => {
+const getBookedTours = async (currentUser) => { currentUser &&
    await axios.get(`${apiUserPath}/${currentUser._id}/bookedTours`).then((res) => { setBookedTours(res.data) }).catch((err) => { console.log(err); });
 } 
 

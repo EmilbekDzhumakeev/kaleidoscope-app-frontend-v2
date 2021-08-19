@@ -21,7 +21,7 @@ const Main = (props) => {
            </div>
             <div>
               
-               <ToursList changeTour={props.changeTour} users={props.users} loggedInUser={props.loggedInUser} currentUser={props.currentUser} tours={props.tours} setTours={props.setTours} bookedTours={props.bookedTours} setBookedTours={props.setBookedTours} currentTour={props.currentTour} setCurrentTour={props.setCurrentTour}/>
+     <ToursList changeTour={props.changeTour} users={props.users} loggedInUser={props.loggedInUser} currentUser={props.currentUser} tours={props.tours} setTours={props.setTours} bookedTours={props.bookedTours} setBookedTours={props.setBookedTours} currentTour={props.currentTour} setCurrentTour={props.setCurrentTour}/> 
               
                </div>
          </div>
