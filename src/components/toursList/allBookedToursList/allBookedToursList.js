@@ -8,7 +8,9 @@ const BookedToursList = (props) => {
       return (
          <li key={index}>
          <div className="avatar-inline"><img src={avatarPlaceholder} alt=''></img></div>
-         <div className='friend-name'>{bookedTour.tourName}</div>
+         
+         <div onClick={() => { props.changeTour(bookedTour)}}> <div className='friend-name'>{(bookedTour.tourName)}</div></div>
+        
       </li>
       )
    })

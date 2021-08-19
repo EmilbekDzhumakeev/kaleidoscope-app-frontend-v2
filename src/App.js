@@ -49,13 +49,13 @@ const App = () => {
    const getAllUsers = async () => {
       await axios.get(apiUserPath).then((res) => { setUsers(res.data); console.log(res.data); }).catch((err) => console.log(err));
    }
-   
+//need to modify this to retrieve data based on search criteria
    const getTours = async (currentUser) => {
       await axios.get(apiTourPath).then((res) => { setTours(res.data) }).catch((err) => { console.log(err); });
 } 
 
 const getBookedTours = async (currentUser) => {
-   await axios.get(apiBookedTourPath).then((res) => { setBookedTours(res.data) }).catch((err) => { console.log(err); });
+   await axios.get(`${apiUserPath}/${currentUser._id}/bookedTours`).then((res) => { setBookedTours(res.data) }).catch((err) => { console.log(err); });
 } 
 
    const postNewUser = async (newUser) => {
@@ -108,7 +108,7 @@ const getBookedTours = async (currentUser) => {
    useEffect(() => {
       postNewPosting(newPosting);
    }, [newPosting])
-   
+
  /////////////// get User Friens ??????????????????????
    useEffect(() => {
       getTours(currentUser); 
