@@ -6,11 +6,12 @@
 }
 
 :root {
-   --theme-medium: #caa466;
-   --theme-dark: #725939;
-   --theme-light: #ebcc97;
-   --text-light: #f4f4f4;
-   --text-medium: #cccccc;
-   --text-dark: #666666;
-   --box-shadow: 3px 3px 7px #666666;
+   --theme-dark: #3A4454;
+   --theme-medium: #53687E;
+   --theme-light: #C2B2B4;
+   
+   --text-light: #F5DDDD;
+   --text-medium: #53687E;
+   --text-dark: #3A4454;
+   --box-shadow: 3px 3px 7px #3A4454;
 }
