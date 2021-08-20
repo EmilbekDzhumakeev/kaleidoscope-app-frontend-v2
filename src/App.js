@@ -1,4 +1,9 @@
 import React, { useState, useEffect } from 'react'
+
+import { CssBaseline, Grid } from '@material-ui/core';
+import { getPlacesData, getWeatherData } from './api/travelAdvisorAPI';
+import Map from './components/map/map';
+
 import Header from './components/header/header'
 import Main from './components/main/main';
 import AppLogin from './components/appLogin/appLogin';
@@ -38,11 +43,21 @@ const App = () => {
    const [newMessage, setNewMessage] = useState(''); 
    const [messages, setMessages] = useState([]);
 
-
-
    const [editProfile, setEditProfile] = useState({ name: '', aboutMe: '' });
 
-
+   const [type, setType] = useState('restaurants');
+   const [rating, setRating] = useState('');
+ 
+   const [coords, setCoords] = useState({});
+   const [bounds, setBounds] = useState(null);
+ 
+   const [weatherData, setWeatherData] = useState([]);
+   const [filteredPlaces, setFilteredPlaces] = useState([]);
+   const [places, setPlaces] = useState([]);
+ 
+   const [autocomplete, setAutocomplete] = useState(null);
+   const [childClicked, setChildClicked] = useState(null);
+   const [isLoading, setIsLoading] = useState(false);
 
 
    /**********************************************************************************************************************************************
@@ -133,6 +148,36 @@ const getBookedTours = async (currentUser) => { currentUser &&
       console.log('getBookedtours')
    }, [currentUser]) 
  
+
+   ///////////////////////////////////////Maping useeffects 
+   useEffect(() => {
+      navigator.geolocation.getCurrentPosition(({ coords: { latitude, longitude } }) => {
+        setCoords({ lat: latitude, lng: longitude });
+      });
+    }, []);
+  
+    useEffect(() => {
+      const filtered = places.filter((place) => Number(place.rating) > rating);
+  
+      setFilteredPlaces(filtered);
+    }, [rating]);
+  
+    useEffect(() => {
+      if (bounds) {
+        setIsLoading(true);
+  
+        getWeatherData(coords.lat, coords.lng)
+          .then((data) => setWeatherData(data));
+  
+        getPlacesData(type, bounds.sw, bounds.ne)
+          .then((data) => {
+            setPlaces(data.filter((place) => place.name && place.num_reviews > 0));
+            setFilteredPlaces([]);
+            setRating('');
+            setIsLoading(false);
+          });
+      }
+    }, [bounds, type]);
 
    /**********************************************************************************************************************************************
    *  EVENT HANDLERS
@@ -283,7 +328,17 @@ const handleNewMessageChange = (event) => {
             messages={messages} setMessages={setMessages} newMessage={newMessage} 
             setNewMessage={setNewMessage} handleNewMessageChange={handleNewMessageChange} handleNewMessageSubmit={handleNewMessageSubmit}/>}
          </div>
-         {/* <Footer /> */}
+         {/* <Footer /> */} 
+          {/* <Grid item xs={12} md={8} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <Map
+            setChildClicked={setChildClicked}
+            setBounds={setBounds}
+            setCoords={setCoords}
+            coords={coords}
+            places={filteredPlaces.length ? filteredPlaces : places}
+            weatherData={weatherData}
+          />
+        </Grid>  */}
       </div>
    )
 }
