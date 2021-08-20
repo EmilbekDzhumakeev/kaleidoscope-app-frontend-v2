@@ -13,8 +13,7 @@ const BannerActionBar = (props) => {
             {props.loggedInUser.email !== props.currentUser.email }
          </div>
 
-         <div className="login"><img onClick={props.handleLoginAvatarClick} src={loginAvatar}
-            alt="Log Out" /></div>
+         <div className="login"><button className="button-md" onClick={props.handleLoginAvatarClick}>Log Out</button></div>
       </div>
    )
 }

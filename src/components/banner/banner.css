@@ -1,7 +1,7 @@
 .banner {
    text-align: left;
    width: 100%;
-   color: rgb(131, 131, 184);
+   color: var(--theme-dark);
    padding: 5px 15px;
    display:flex;
    width: 100%;
@@ -40,12 +40,12 @@ margin: 0;
 
 .banner h1 {
    font-family: 'Times New Roman', Times, serif;
-   color: rgb(131, 131, 184);
+   color: var(--theme-dark);
    font-size: 2.5em;
 }
 
 .banner h1.span {
-   color: rgb(131, 131, 184);
+   color: var(--theme-medium);
 }
 
 .banner .friend-request-status {

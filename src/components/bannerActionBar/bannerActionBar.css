@@ -8,8 +8,8 @@
 .banner-action-bar div.button-md:hover {
     min-width: 200px;
     display: flex;
-    background-color:  rgb(103, 103, 155);
-    color: rgb(120, 120, 179);
+    background-color: var(--theme-medium);
+    color: var(--theme-light);
 }
 
 .banner-action-bar .request-pending {
@@ -17,8 +17,8 @@
     max-width: 50px;
     min-width: 25px;
     padding: 1px 5px;
-    background-color: rgb(103, 103, 155);
-    color:  rgb(103, 103, 155);
+    background-color: var(--theme-light);
+    color: var(--theme-dark);
 }
 
 .banner-action-bar .request-text {
