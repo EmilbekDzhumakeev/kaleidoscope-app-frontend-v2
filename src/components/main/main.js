@@ -16,8 +16,9 @@ const Main = (props) => {
             <div>
         
             {props.currentTour.comments && <Timeline postings={props.postings} setPostings={props.setPostings} newPosting={props.newPosting} setNewPosting={props.setNewPosting} handleNewPostingChange={props.handleNewPostingChange} handleNewPostingSubmit={props.handleNewPostingSubmit} currentUser={props.currentUser} loggedInUser={props.loggedInUser} currentTour={props.currentTour} setCurrentTour={props.setCurrentTour}/> }
-            {props.currentTour.messages  && < MessageBar changeTour={props.changeTour} users={props.users} loggedInUser={props.loggedInUser} currentUser={props.currentUser} tours={props.tours} setTours={props.setTours} bookedTours={props.bookedTours} setBookedTours={props.setBookedTours} currentTour={props.currentTour} setCurrentTour={props.setCurrentTour}/> 
-              }
+            {props.currentTour.messages  && < MessageBar changeTour={props.changeTour} users={props.users} loggedInUser={props.loggedInUser} currentUser={props.currentUser} tours={props.tours} setTours={props.setTours} bookedTours={props.bookedTours} setBookedTours={props.setBookedTours} currentTour={props.currentTour} setCurrentTour={props.setCurrentTour}
+               messages={props.messages} setMessages={props.setMessages} newMessage={props.newMessage} setNewMessage={props.setNewMessage} handleNewMessageChange={props.handleNewMessageChange} handleNewMessageSubmit={props.handleNewMessageSubmit}/>}
+             
            </div>
             <div>
               

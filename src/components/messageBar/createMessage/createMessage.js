@@ -1,7 +1,7 @@
 import React from 'react'
-import './createPost.css'
+import './createMessage.css'
 
-const CreatePost = (props) => {
+const CreateMessage = (props) => {
    // handle new post submission
 
 
@@ -10,20 +10,20 @@ const CreatePost = (props) => {
          <div className='add-post'>
             <form onSubmit={
                (event) => {
-                  props.handleNewPostingSubmit(event)
+                  props.handleNewMessageSubmit(event)
                }
             }>
                <textarea className='post-text' name='posting'
                   rows={3}
-                  onChange={props.handleNewPostingChange}
-                  value={props.newPosting}
-                  placeholder='Add a new posting ...'>
+                  onChange={props.handleNewMessageChange}
+                  value={props.newMessage}
+                  placeholder='Send a new message ...'>
                </textarea>
-               {(props.newPosting.length > 2) && <button className='button-sm'>Save</button>}
+               {(props.newMessage.length > 2) && <button className='button-sm'>Send</button>}
             </form>
          </div>
       </div>
    )
 }
 
-export default CreatePost
+export default CreateMessage;

@@ -31,17 +31,23 @@ const App = () => {
    const [register, setRegister] = useState(false);
    const [messageText, setMessageText] = useState('');
    const [showMessageBar, setShowMessageBar] = useState(false);
-   const [newPosting, setNewPosting] = useState('');
    
+   const [newPosting, setNewPosting] = useState(''); 
    const [postings, setPostings] = useState([]);
+
+   const [newMessage, setNewMessage] = useState(''); 
+   const [messages, setMessages] = useState([]);
+
+
+
    const [editProfile, setEditProfile] = useState({ name: '', aboutMe: '' });
 
 
 
 
-   /**********************************************************
-    *  API ROUTES
-    **********************************************************/
+   /**********************************************************************************************************************************************
+   *  API ROUTES
+   ***********************************************************************************************************************************************/
     const apiUserPath = 'http://localhost:5000/api/users';
     const apiTourPath = 'http://localhost:5000/api/tours'; 
     const apiBookedTourPath = 'http://localhost:5000/api/bookedTours';
@@ -81,10 +87,13 @@ const getBookedTours = async (currentUser) => { currentUser &&
    const postNewPosting = async (currentTour, data) => {
       await axios.post(`${apiTourPath}/${currentTour._id}/comment`, data).then((res) => (res.data)).catch((err) => console.log(err));
    }
-
-   /**********************************************************
-    *  USE EFFECTS
-    **********************************************************/
+ 
+   const postNewMessage = async (currentTour, data) => {
+      await axios.post(`${apiBookedTourPath}/${currentTour._id}/messages`, data).then((res) => (res.data)).catch((err) => console.log(err));
+   }
+  /**********************************************************************************************************************************************
+   *  USE EFFECT
+   ***********************************************************************************************************************************************/
    useEffect(() => {
       getAllUsers();
    }, [currentUser])
@@ -99,7 +108,7 @@ const getBookedTours = async (currentUser) => { currentUser &&
       postUserLogin(logonData);
    }, [logonData])
 
-   // get Tour Posting Feed 
+   // get Tour COMMENT Posting Feed 
    useEffect(() => {
       getPostings(currentTour);
       console.log('getPostings');
@@ -109,7 +118,11 @@ const getBookedTours = async (currentUser) => { currentUser &&
       postNewPosting(newPosting);
    }, [newPosting])
 
- /////////////// get User Friens ??????????????????????
+   useEffect(() => {
+      postNewMessage(newMessage);
+   }, [newMessage])
+
+ /////////////////////////////////////////
    useEffect(() => {
       getTours(currentUser); 
       console.log('gettours')
@@ -121,9 +134,9 @@ const getBookedTours = async (currentUser) => { currentUser &&
    }, [currentUser]) 
  
 
-   /**********************************************************
+   /**********************************************************************************************************************************************
    *  EVENT HANDLERS
-   ***********************************************************/
+   ***********************************************************************************************************************************************/
    const handleLoginAvatarClick = () => {    // Banner component
       //alert('avatar click');
       setLoggedIn(false);
@@ -177,7 +190,7 @@ const getBookedTours = async (currentUser) => { currentUser &&
       console.log('tempTour', currentTour)
    }
 
-   //handle new posting 
+   /////////////////////////////////////////////////handle new COMMENT posting 
    const handleNewPostingSubmit = (event) => {
       event.preventDefault();
       const posting = {
@@ -185,20 +198,17 @@ const getBookedTours = async (currentUser) => { currentUser &&
          feedback: newPosting,
       }
       postNewPosting(currentTour, posting);
-      console.log('New Post:', posting);
-      console.log('CurrentTour:', currentTour)
-      console.log('user id', loggedInUser._id)
+      // console.log('New Post:', posting);
+      // console.log('CurrentTour:', currentTour)
+      // console.log('user id', loggedInUser._id)
 
-      // Ally, state variables are immunable. if you use the push method on them, changing will not trigged React to re-render the DOM. Thus no screen updates after change
-      // const allPosts = [...postings];
-      // allPosts.push(posting);
       const newCurrentTour = { ...currentTour };
       newCurrentTour.comments.push(posting);
       setCurrentTour(newCurrentTour);
       setNewPosting('');
    }
 
-   //handle new posting change 
+   //handle new COMMENT posting change 
    const handleNewPostingChange = (event) => {
       setNewPosting(event.target.value);
    }
@@ -220,6 +230,28 @@ const getBookedTours = async (currentUser) => { currentUser &&
       });
    }
 
+ ///////////////////////////////////////////////////handle new MESSAGE posting 
+ const handleNewMessageSubmit = (event) => {
+   event.preventDefault();
+   const posting = {
+      author: loggedInUser.name,
+      post: newMessage,
+   }
+   postNewMessage(currentTour, posting);
+    console.log('New message -------------Post:', posting);
+   // console.log('CurrentTour:', currentTour)
+   // console.log('user id', loggedInUser._id)
+
+   const newCurrentTour = { ...currentTour };
+   newCurrentTour.messages.push(posting);
+   setCurrentTour(newCurrentTour);
+   setNewMessage('');
+}
+
+//handle new COMMENT posting change 
+const handleNewMessageChange = (event) => {
+   setNewMessage(event.target.value);
+}
 
 
 
@@ -232,13 +264,24 @@ const getBookedTours = async (currentUser) => { currentUser &&
 
    return (
       <div id='app' className='App'>
-         <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} setCurrentUser={setCurrentUser} currentUser={currentUser} handleLoginAvatarClick={handleLoginAvatarClick} loggedInUser={loggedInUser} />
-         {showMessageBar && <MessageBar messageText={messageText} setShowMessageBar={setShowMessageBar} handleCloseMessageBar={handleCloseMessageBar} />}
+         <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} setCurrentUser={setCurrentUser} currentUser={currentUser} 
+         handleLoginAvatarClick={handleLoginAvatarClick} loggedInUser={loggedInUser} />
+{/*
+         {showMessageBar && <MessageBar messageText={messageText} setShowMessageBar={setShowMessageBar} 
+         handleCloseMessageBar={handleCloseMessageBar} messages={messages} setMessages={setMessages} newMessage={newMessage} 
+         setNewMessage={setNewMessage} handleNewMessageChange={handleNewMessageChange} handleNewMessageSubmit={handleNewMessageSubmit}/>}
+*/}  
          <div className='content'>
             {!loggedIn && <AppLogin newUser={newUser} handleUserChange={handleUserChange} handleUserSubmit={handleUserSubmit}
                register={register} setRegister={setRegister} setLoggedIn={setLoggedIn} />}
 
-            {(loggedIn && currentUser )  && <Main changeTour={changeTour} changeUser={changeUser} users={users} loggedInUser={loggedInUser} currentUser={currentUser} editProfile={editProfile} handleEditProfileChange={handleEditProfileChange} handleEditProfileSubmit={handleEditProfileSubmit} handleNewPostingChange={handleNewPostingChange} handleNewPostingSubmit={handleNewPostingSubmit} newPosting={newPosting} setNewPosting={setNewPosting} postings={postings} setPostings={setPostings} tours={tours} setTours={setTours} bookedTours={bookedTours} setBookedTours={setBookedTours} currentTour={currentTour} setCurrentTour={setCurrentTour}/>}
+            {(loggedIn && currentUser )  && <Main changeTour={changeTour} changeUser={changeUser} users={users} 
+            loggedInUser={loggedInUser} currentUser={currentUser} editProfile={editProfile} handleEditProfileChange={handleEditProfileChange} 
+            handleEditProfileSubmit={handleEditProfileSubmit} handleNewPostingChange={handleNewPostingChange} handleNewPostingSubmit={handleNewPostingSubmit} 
+            newPosting={newPosting} setNewPosting={setNewPosting} postings={postings} setPostings={setPostings} tours={tours} setTours={setTours} 
+            bookedTours={bookedTours} setBookedTours={setBookedTours} currentTour={currentTour} setCurrentTour={setCurrentTour} 
+            messages={messages} setMessages={setMessages} newMessage={newMessage} 
+            setNewMessage={setNewMessage} handleNewMessageChange={handleNewMessageChange} handleNewMessageSubmit={handleNewMessageSubmit}/>}
          </div>
          {/* <Footer /> */}
       </div>

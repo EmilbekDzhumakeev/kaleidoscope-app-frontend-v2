@@ -1,6 +1,7 @@
 import React from 'react';
-import { CancelRounded } from '@material-ui/icons'; 
-import UserMessage from './userMessage/userMessage';
+//import { CancelRounded } from '@material-ui/icons'; 
+import UserMessage from './userMessage/userMessage'; 
+import CreateMessage from './createMessage/createMessage';
 import './messageBar.css'
 
 /////////////////////////////////////////////////////////////////////////
@@ -14,13 +15,14 @@ const MessageBar = (props) => {
    return (
       <div className='timeline'>
          <h3>Messages</h3> 
-         <h2>Booked Tour: {props.currentTour.tourName}</h2> 
+         <h2>Tour Title: {props.currentTour.tourName}</h2> 
          <p2>Description: {props.currentTour.description}</p2> 
         
          <div> 
-            {/*
-            <CreateMessage newPosting={props.newPosting} setNewPosting={props.setNewPosting} postings={props.postings} setPostings={props.setPostings} handleNewPostingChange={props.handleNewPostingChange} handleNewPostingSubmit={props.handleNewPostingSubmit} />
-            */}
+            
+           <CreateMessage messages={props.messages} setMessages={props.setMessages} newMessage={props.newMessage} 
+           setNewMessage={props.setNewMessage} handleNewMessageChange={props.handleNewMessageChange} handleNewMessageSubmit={props.handleNewMessageSubmit}/>
+            
         </div>
          <div>
             <ul>

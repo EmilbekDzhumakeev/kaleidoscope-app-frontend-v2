@@ -1,4 +1,4 @@
-import LikesBar from '../../timeline/userPost/likesBar/likesBar';
+//import LikesBar from '../../timeline/userPost/likesBar/likesBar';
 import './userMessage.css';
 
 const UserMessage = (props) => {
