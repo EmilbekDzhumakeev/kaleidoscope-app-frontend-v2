@@ -47,19 +47,19 @@ const App = () => {
 
    const [editProfile, setEditProfile] = useState({ name: '', aboutMe: '' });
 
-   const [type, setType] = useState('restaurants');
-   const [rating, setRating] = useState('');
+   // const [type, setType] = useState('restaurants');
+   // const [rating, setRating] = useState('');
  
-   const [coords, setCoords] = useState({});
-   const [bounds, setBounds] = useState(null);
+   // const [coords, setCoords] = useState({});
+   // const [bounds, setBounds] = useState(null);
  
-   const [weatherData, setWeatherData] = useState([]);
-   const [filteredPlaces, setFilteredPlaces] = useState([]);
-   const [places, setPlaces] = useState([]);
+   // const [weatherData, setWeatherData] = useState([]);
+   // const [filteredPlaces, setFilteredPlaces] = useState([]);
+   // const [places, setPlaces] = useState([]);
  
-   const [autocomplete, setAutocomplete] = useState(null);
-   const [childClicked, setChildClicked] = useState(null);
-   const [isLoading, setIsLoading] = useState(false);
+   // const [autocomplete, setAutocomplete] = useState(null);
+   // const [childClicked, setChildClicked] = useState(null);
+   // const [isLoading, setIsLoading] = useState(false);
 
 
    /**********************************************************************************************************************************************
@@ -151,35 +151,35 @@ const getBookedTours = async (currentUser) => { currentUser &&
    }, [currentUser]) 
  
 ///////////////////////////////////////Maping useeffects 
-/////////////////////////////////////////////////////////////////setting current geolocation
-   useEffect(() => {
-      navigator.geolocation.getCurrentPosition(({ coords: { latitude, longitude } }) => {
-        setCoords({ lat: latitude, lng: longitude });
-      });
-    }, []);
+// /////////////////////////////////////////////////////////////////setting current geolocation
+//    useEffect(() => {
+//       navigator.geolocation.getCurrentPosition(({ coords: { latitude, longitude } }) => {
+//         setCoords({ lat: latitude, lng: longitude });
+//       });
+//     }, []);
   
-    useEffect(() => {
-      const filtered = places.filter((place) => Number(place.rating) > rating);
+//     useEffect(() => {
+//       const filtered = places.filter((place) => Number(place.rating) > rating);
   
-      setFilteredPlaces(filtered);
-    }, [rating]);
+//       setFilteredPlaces(filtered);
+//     }, [places,rating]);
   
-    useEffect(() => {
-      if (bounds) {
-        setIsLoading(true);
+//     useEffect(() => {
+//       if (bounds) {
+//         setIsLoading(true);
   
-        getWeatherData(coords.lat, coords.lng)
-          .then((data) => setWeatherData(data));
+//         getWeatherData(coords.lat, coords.lng)
+//           .then((data) => setWeatherData(data));
   
-        getPlacesData(type, bounds.sw, bounds.ne)
-          .then((data) => {
-            setPlaces(data.filter((place) => place.name && place.num_reviews > 0));
-            setFilteredPlaces([]);
-            setRating('');
-            setIsLoading(false);
-          });
-      }
-    }, [bounds, type]);
+//         getPlacesData(type, bounds.sw, bounds.ne)
+//           .then((data) => {
+//             setPlaces(data.filter((place) => place.name && place.num_reviews > 0));
+//             setFilteredPlaces([]);
+//             setRating('');
+//             setIsLoading(false);
+//           });
+//       }
+//     }, [coords, bounds, type]);
 
    /**********************************************************************************************************************************************
    *  EVENT HANDLERS
@@ -301,14 +301,14 @@ const handleNewMessageChange = (event) => {
 }
 
 ////////////////////////////////////////////////////////////Mapping 
-const onLoad = (autoC) => setAutocomplete(autoC);
+// const onLoad = (autoC) => setAutocomplete(autoC);
 
-const onPlaceChanged = () => {
-  const lat = autocomplete.getPlace().geometry.location.lat();
-  const lng = autocomplete.getPlace().geometry.location.lng();
+// const onPlaceChanged = () => {
+//   const lat = autocomplete.getPlace().geometry.location.lat();
+//   const lng = autocomplete.getPlace().geometry.location.lng();
 
-  setCoords({ lat, lng });
-};
+//   setCoords({ lat, lng });
+// };
 
 
    /////////////// CONSOLE.LOGS /////////////////
@@ -347,8 +347,8 @@ const onPlaceChanged = () => {
 
             />}
          </div> 
-         <CssBaseline /> {/*
-      <NavBar onPlaceChanged={onPlaceChanged} onLoad={onLoad} /> */}
+         {/* <CssBaseline /> 
+      <NavBar onPlaceChanged={onPlaceChanged} onLoad={onLoad} />  
          <Grid container spacing={3} style={{ width: '100%' }}>
         <Grid item xs={12} md={4}>
           <List
@@ -371,7 +371,7 @@ const onPlaceChanged = () => {
             weatherData={weatherData}
           />
         </Grid>
-      </Grid>
+      </Grid> */}
          {/* <Footer /> */} 
        
       </div>
