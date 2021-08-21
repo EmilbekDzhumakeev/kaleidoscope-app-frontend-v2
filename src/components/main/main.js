@@ -38,7 +38,7 @@ const Main = (props) => {
      const filtered = places.filter((place) => Number(place.rating) > rating);
  
      setFilteredPlaces(filtered);
-   }, [rating]);
+   }, [places, rating]);
  
    useEffect(() => {
      if (bounds) {
@@ -55,8 +55,10 @@ const Main = (props) => {
            setIsLoading(false);
          });
      }
-   }, [bounds, type]);
+   }, [ bounds, type]);
  
+
+   /////////////////////////////////////////////////////////////////Autocomplete
    const onLoad = (autoC) => setAutocomplete(autoC);
  
    const onPlaceChanged = () => {
@@ -72,7 +74,7 @@ const Main = (props) => {
 
 
          <CssBaseline /> 
-     {/* <NavBar onPlaceChanged={onPlaceChanged} onLoad={onLoad} />  */}
+  <NavBar onPlaceChanged={onPlaceChanged} onLoad={onLoad} /> 
          <Grid container spacing={3} style={{ width: '100%' }}>
         <Grid item xs={12} md={4}>
           <List
