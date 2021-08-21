@@ -101,16 +101,7 @@ const Main = (props) => {
             <div>
                <Profile currentUser={props.currentUser} loggedInUser={props.loggedInUser} editProfile={props.editProfile} handleEditProfileChange={props.handleEditProfileChange} handleEditProfileSubmit={props.handleEditProfileSubmit} />
             </div>
-            {/* <Grid item xs={12} md={8} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-         <Map
-            setChildClicked={props.setChildClicked}
-            setBounds={props.setBounds}
-            setCoords={props.setCoords}
-            coords={props.coords}
-            places={props.filteredPlaces.length ? props.filteredPlaces : props.places}
-            weatherData={props.weatherData}
-          />
-        </Grid>  */}
+        
             <div>
         
             {props.currentTour.comments && <Timeline postings={props.postings} setPostings={props.setPostings} newPosting={props.newPosting} setNewPosting={props.setNewPosting} handleNewPostingChange={props.handleNewPostingChange} handleNewPostingSubmit={props.handleNewPostingSubmit} currentUser={props.currentUser} loggedInUser={props.loggedInUser} currentTour={props.currentTour} setCurrentTour={props.setCurrentTour}/> }

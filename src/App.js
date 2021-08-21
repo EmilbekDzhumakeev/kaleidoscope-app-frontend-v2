@@ -1,11 +1,5 @@
 import React, { useState, useEffect } from 'react'
 
-import { CssBaseline, Grid } from '@material-ui/core';
-import { getPlacesData, getWeatherData } from './api/travelAdvisorAPI';
-import Map from './components/map/map'; 
-import NavBar from './components/navBar/navBar';
-import List from './components/list/list';
-
 import Header from './components/header/header'
 import Main from './components/main/main';
 import AppLogin from './components/appLogin/appLogin';
@@ -46,21 +40,6 @@ const App = () => {
    const [messages, setMessages] = useState([]);
 
    const [editProfile, setEditProfile] = useState({ name: '', aboutMe: '' });
-
-   // const [type, setType] = useState('restaurants');
-   // const [rating, setRating] = useState('');
- 
-   // const [coords, setCoords] = useState({});
-   // const [bounds, setBounds] = useState(null);
- 
-   // const [weatherData, setWeatherData] = useState([]);
-   // const [filteredPlaces, setFilteredPlaces] = useState([]);
-   // const [places, setPlaces] = useState([]);
- 
-   // const [autocomplete, setAutocomplete] = useState(null);
-   // const [childClicked, setChildClicked] = useState(null);
-   // const [isLoading, setIsLoading] = useState(false);
-
 
    /**********************************************************************************************************************************************
    *  API ROUTES
@@ -150,37 +129,6 @@ const getBookedTours = async (currentUser) => { currentUser &&
       console.log('getBookedtours')
    }, [currentUser]) 
  
-///////////////////////////////////////Maping useeffects 
-// /////////////////////////////////////////////////////////////////setting current geolocation
-//    useEffect(() => {
-//       navigator.geolocation.getCurrentPosition(({ coords: { latitude, longitude } }) => {
-//         setCoords({ lat: latitude, lng: longitude });
-//       });
-//     }, []);
-  
-//     useEffect(() => {
-//       const filtered = places.filter((place) => Number(place.rating) > rating);
-  
-//       setFilteredPlaces(filtered);
-//     }, [places,rating]);
-  
-//     useEffect(() => {
-//       if (bounds) {
-//         setIsLoading(true);
-  
-//         getWeatherData(coords.lat, coords.lng)
-//           .then((data) => setWeatherData(data));
-  
-//         getPlacesData(type, bounds.sw, bounds.ne)
-//           .then((data) => {
-//             setPlaces(data.filter((place) => place.name && place.num_reviews > 0));
-//             setFilteredPlaces([]);
-//             setRating('');
-//             setIsLoading(false);
-//           });
-//       }
-//     }, [coords, bounds, type]);
-
    /**********************************************************************************************************************************************
    *  EVENT HANDLERS
    ***********************************************************************************************************************************************/
@@ -300,17 +248,6 @@ const handleNewMessageChange = (event) => {
    setNewMessage(event.target.value);
 }
 
-////////////////////////////////////////////////////////////Mapping 
-// const onLoad = (autoC) => setAutocomplete(autoC);
-
-// const onPlaceChanged = () => {
-//   const lat = autocomplete.getPlace().geometry.location.lat();
-//   const lng = autocomplete.getPlace().geometry.location.lng();
-
-//   setCoords({ lat, lng });
-// };
-
-
    /////////////// CONSOLE.LOGS /////////////////
    console.log(users);
    console.log('current user: ', currentUser);
@@ -339,39 +276,9 @@ const handleNewMessageChange = (event) => {
             messages={messages} setMessages={setMessages} newMessage={newMessage} 
             setNewMessage={setNewMessage} handleNewMessageChange={handleNewMessageChange} handleNewMessageSubmit={handleNewMessageSubmit}
          
-            // type={type} setType={setType} rating={rating} setRating={setRating} coords={coords} setCoords={setCoords} 
-            // bounds={bounds} setBounds={setBounds} weatherData={weatherData} setWeatherData={setWeatherData} 
-            // filteredPlaces={filteredPlaces} setFilteredPlaces={setFilteredPlaces} place={places} setPlaces={setPlaces}
-            // autocomplete={autocomplete} setAutocomplete={setAutocomplete} childClicked={childClicked} setChildClicked={setChildClicked} 
-            // isLoading={isLoading} setIsLoading={setIsLoading}
-
             />}
          </div> 
-         {/* <CssBaseline /> 
-      <NavBar onPlaceChanged={onPlaceChanged} onLoad={onLoad} />  
-         <Grid container spacing={3} style={{ width: '100%' }}>
-        <Grid item xs={12} md={4}>
-          <List
-            isLoading={isLoading}
-            childClicked={childClicked}
-            places={filteredPlaces.length ? filteredPlaces : places}
-            type={type}
-            setType={setType}
-            rating={rating}
-            setRating={setRating}
-          />
-        </Grid>
-        <Grid item xs={12} md={8} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-          <Map
-            setChildClicked={setChildClicked}
-            setBounds={setBounds}
-            setCoords={setCoords}
-            coords={coords}
-            places={filteredPlaces.length ? filteredPlaces : places}
-            weatherData={weatherData}
-          />
-        </Grid>
-      </Grid> */}
+       
          {/* <Footer /> */} 
        
       </div>
