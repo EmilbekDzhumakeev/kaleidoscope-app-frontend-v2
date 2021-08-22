@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import Footer from '../footer/footer';
 import Profile from '../profile/profile'
 import Timeline from '../timeline/timeline'
 import ToursList from '../toursList/toursList';
@@ -73,7 +73,7 @@ const Main = (props) => {
          <div>
 
 
-         <CssBaseline /> 
+         {/* <CssBaseline /> 
   <NavBar onPlaceChanged={onPlaceChanged} onLoad={onLoad} /> 
          <Grid container spacing={3} style={{ width: '100%' }}>
         <Grid item xs={12} md={4}>
@@ -97,7 +97,7 @@ const Main = (props) => {
             weatherData={weatherData}
           />
         </Grid>
-      </Grid>
+      </Grid> */}
 
 
             <div>
@@ -114,8 +114,9 @@ const Main = (props) => {
             <div>
               
      <ToursList changeTour={props.changeTour} users={props.users} loggedInUser={props.loggedInUser} currentUser={props.currentUser} tours={props.tours} setTours={props.setTours} bookedTours={props.bookedTours} setBookedTours={props.setBookedTours} currentTour={props.currentTour} setCurrentTour={props.setCurrentTour}/> 
-              
+     <Footer  handleTourSubmit={props.handleTourSubmit}newTour={props.newTour} registerTour={props.registerTour} handleTourChange={props.handleTourChange} setRegisterTour={props.setRegisterTour} />
                </div>
+             
          </div>
       </div>
    )

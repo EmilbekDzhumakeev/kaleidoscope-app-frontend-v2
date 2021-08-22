@@ -10,6 +10,7 @@ import './App.css'
 /**************************************************** */
 // Remove after production state is created (For demo)
 import myTour from './_demoData/myTour.js'
+import Footer from './components/footer/footer';
 /**************************************************** */
 
 const App = () => {
@@ -23,13 +24,15 @@ const App = () => {
       email: '',
       password: '',
    })
+   const [register, setRegister] = useState(false);
+
    const [loggedInUser, setLoggedInUser] = useState(null);
    const [currentUser, setCurrentUser] = useState(null);
    const [newUserData, setNewUserData] = useState(null);
 
    const [logonData, setlogonData] = useState(null);
    const [loggedIn, setLoggedIn] = useState(false);
-   const [register, setRegister] = useState(false);
+  
    const [messageText, setMessageText] = useState('');
    const [showMessageBar, setShowMessageBar] = useState(false);
    
@@ -39,7 +42,18 @@ const App = () => {
    const [newMessage, setNewMessage] = useState(''); 
    const [messages, setMessages] = useState([]);
 
-   const [editProfile, setEditProfile] = useState({ name: '', aboutMe: '' });
+   const [editProfile, setEditProfile] = useState({ name: '', aboutMe: '' }); 
+
+        ///////////////////////////////////////////////////////////////////////states
+        const [newTour, setNewTour] = useState({
+       
+         tTitle: '',
+         description: '', 
+         route:''
+      })
+      const [registerTour,setRegisterTour] = useState(false); 
+      const [newTourData, setNewTourData] = useState(null);
+ 
 
    /**********************************************************************************************************************************************
    *  API ROUTES
@@ -87,6 +101,18 @@ const getBookedTours = async (currentUser) => { currentUser &&
    const postNewMessage = async (currentTour, data) => {
       await axios.post(`${apiBookedTourPath}/${currentTour._id}/messages`, data).then((res) => (res.data)).catch((err) => console.log(err));
    }
+
+   ///////////////////////////////////////////////////////////////////////axios for footer
+
+
+ const postNewTour = async (data) => {
+    await axios.post(`${apiTourPath}/newTour`, data).then((res) => { console.log(res.data); }).catch(err => {
+       if (err.response.status === 400) {   
+        console.log(err.response.data)
+       
+       }
+    })
+ }
   /**********************************************************************************************************************************************
    *  USE EFFECT
    ***********************************************************************************************************************************************/
@@ -129,6 +155,11 @@ const getBookedTours = async (currentUser) => { currentUser &&
       console.log('getBookedtours')
    }, [currentUser]) 
  
+   ///////////////////////////////////////////////////////////////////////useEffect for footer
+useEffect(() => {
+   postNewTour(newTourData);
+}, [newTourData])
+
    /**********************************************************************************************************************************************
    *  EVENT HANDLERS
    ***********************************************************************************************************************************************/
@@ -225,6 +256,40 @@ const getBookedTours = async (currentUser) => { currentUser &&
       });
    }
 
+
+
+
+   ///////////////////////////////////////////////////////////////////////event handlers 
+  
+const handleTourChange = (event) => {     // AppLogin
+   event.persist();    // calling event.persis allows references to the event occur asyncronously
+   setNewTour(prevNewTour => ({ ...prevNewTour, [event.target.name]: event.target.value }));
+   console.log(newTour);
+}
+/////////////////////
+ const handleTourSubmit = (event) => {     // AppLogin
+   event.preventDefault();
+   if (registerTour) {
+      setNewTourData(newTour);   // change triggers post new user actions
+      setRegisterTour(false);        // end registration mode
+      setNewTour({
+       tTitle: '',
+       description: '', 
+       route:''
+      });
+   } else {
+     
+      setNewTour({
+         tTitle: '',
+         description: '', 
+         route:''
+      });
+      document.getElementById('app').style.backgroundColor = '#999999';
+      //alert('submit form');
+   }
+}
+
+
  ///////////////////////////////////////////////////handle new MESSAGE posting 
  const handleNewMessageSubmit = (event) => {
    event.preventDefault();
@@ -249,12 +314,15 @@ const handleNewMessageChange = (event) => {
 }
 
    /////////////// CONSOLE.LOGS /////////////////
-   console.log(users);
-   console.log('current user: ', currentUser);
-   console.log('loggedInUser: ', loggedInUser);
-   console.log('currentTour: ', currentTour);
-   console.log('currentTourcomments: ', currentTour.comments);
-
+   // console.log(users);
+   // console.log('current user: ', currentUser);
+   // console.log('loggedInUser: ', loggedInUser);
+   // console.log('currentTour: ', currentTour);
+   // console.log('currentTourcomments: ', currentTour.comments); 
+   console.log('newTour//////////: ', newTour);
+   console.log('newTourData/????????????: ', newTourData); 
+   console.log('registerTour/>>>>>>>>: ', registerTour);
+  
    return (
       <div id='app' className='App'>
          <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} setCurrentUser={setCurrentUser} currentUser={currentUser} 
@@ -276,10 +344,12 @@ const handleNewMessageChange = (event) => {
             messages={messages} setMessages={setMessages} newMessage={newMessage} 
             setNewMessage={setNewMessage} handleNewMessageChange={handleNewMessageChange} handleNewMessageSubmit={handleNewMessageSubmit}
          
+             newTour={newTour} registerTour={registerTour} handleTourChange={handleTourChange} setRegisterTour={setRegisterTour} 
+             handleTourSubmit={handleTourSubmit}
             />}
          </div> 
        
-         {/* <Footer /> */} 
+        {/* <Footer  newTour={newTour} registerTour={registerTour} handleTourChange={handleTourChange} setRegisterTour={setRegisterTour} /> */}
        
       </div>
    )

@@ -1,7 +1,7 @@
 import React from 'react';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import './bannerActionBar.css';
-import loginAvatar from '../../images/login-placeholder.png';
+
 
 const BannerActionBar = (props) => {
    return (
