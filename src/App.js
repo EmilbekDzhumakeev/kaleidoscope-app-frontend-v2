@@ -105,7 +105,7 @@ const getBookedTours = async (currentUser) => { currentUser &&
    ///////////////////////////////////////////////////////////////////////axios for footer
 
 
- const postNewTour = async (data) => {
+ const postNewTour = async ( data) => {
     await axios.post(`${apiTourPath}/newTour`, data).then((res) => { console.log(res.data); }).catch(err => {
        if (err.response.status === 400) {   
         console.log(err.response.data)
