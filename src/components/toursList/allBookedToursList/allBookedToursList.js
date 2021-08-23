@@ -1,6 +1,6 @@
 import React from 'react';
 import './allBookedToursList.css';
-import avatarPlaceholder from '../../../images/avatar-placeholder.png' 
+import avatarPlaceholder from '../../../images/check-mark.png' 
 
 const BookedToursList = (props) => { 
  

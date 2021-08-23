@@ -1,5 +1,5 @@
 import React from 'react';
-import avatarPlaceholder from '../../../images/avatar-placeholder.png'
+import avatarPlaceholder from '../../../images/travel-pin.png'
 import './allToursList.css';
 
 const AllToursList = (props) => {

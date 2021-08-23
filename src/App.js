@@ -69,11 +69,16 @@ const App = () => {
    const getTours = async (currentUser) => {
       await axios.get(apiTourPath).then((res) => { setTours(res.data) }).catch((err) => { console.log(err); });
 } 
+////////////////////////////////////////////////////////////////////modified this area to retrieve all booked tours for presentation purpose
+// const getBookedTours = async (currentUser) => { currentUser &&
+//    await axios.get(`${apiUserPath}/${currentUser._id}/bookedTours`).then((res) => { setBookedTours(res.data) }).catch((err) => { console.log(err); });
+// } 
 
 const getBookedTours = async (currentUser) => { currentUser &&
-   await axios.get(`${apiUserPath}/${currentUser._id}/bookedTours`).then((res) => { setBookedTours(res.data) }).catch((err) => { console.log(err); });
-} 
+   await axios.get(apiBookedTourPath).then((res) => { setBookedTours(res.data) }).catch((err) => { console.log(err); });
+}
 
+////////////////////////////////////////////////////////////////////
    const postNewUser = async (newUser) => {
       await axios.post(apiUserPath, newUser).then((res) => { console.log(res.data); }).catch(err => {
          if (err.response.status === 400) {
