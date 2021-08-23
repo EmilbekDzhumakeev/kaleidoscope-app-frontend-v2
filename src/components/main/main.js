@@ -73,7 +73,7 @@ const Main = (props) => {
          <div>
 
 
-         {/* <CssBaseline /> 
+         <CssBaseline /> 
   <NavBar onPlaceChanged={onPlaceChanged} onLoad={onLoad} /> 
          <Grid container spacing={3} style={{ width: '100%' }}>
         <Grid item xs={12} md={4}>
@@ -97,7 +97,7 @@ const Main = (props) => {
             weatherData={weatherData}
           />
         </Grid>
-      </Grid> */}
+      </Grid>
 
 
             <div>
