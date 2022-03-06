@@ -55,7 +55,7 @@ const Main = (props) => {
            setIsLoading(false);
          });
      }
-   }, [ bounds, type]);
+   }, [bounds, coords.lat, coords.lng, type]);
  
 
    /////////////////////////////////////////////////////////////////Autocomplete
