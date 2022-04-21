@@ -58,9 +58,9 @@ const App = () => {
    /**********************************************************************************************************************************************
    *  API ROUTES
    ***********************************************************************************************************************************************/
-    const apiUserPath = 'http://localhost:6000/api/users';
-    const apiTourPath = 'http://localhost:6000/api/tours'; 
-    const apiBookedTourPath = 'http://localhost:6000/api/bookedTours';
+    const apiUserPath = 'http://localhost:8000/api/users';
+    const apiTourPath = 'http://localhost:8000/api/tours'; 
+    const apiBookedTourPath = 'http://localhost:8000/api/bookedTours';
 
    const getAllUsers = async () => {
       await axios.get(apiUserPath).then((res) => { setUsers(res.data); console.log(res.data); }).catch((err) => console.log(err));
@@ -330,7 +330,7 @@ const handleNewMessageChange = (event) => {
    console.log('newTour//////////: ', newTour);
    console.log('newTourData/????????????: ', newTourData); 
    console.log('registerTour/>>>>>>>>: ', registerTour);
-  
+   console.log('loggedInUser: ', loggedIn); 
    return (
       <div id='app' className='App'>
          <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} setCurrentUser={setCurrentUser} currentUser={currentUser} 
