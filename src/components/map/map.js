@@ -8,6 +8,7 @@ import mapStyles2 from './mapStyles2';
 import mapStyles from '../../mapStyles';
 import useStyles from './styles.js';
 
+
 const Map = ({ coords, places, setCoords, setBounds, setChildClicked, weatherData }) => {
   const matches = useMediaQuery('(min-width:600px)');
   const classes = useStyles();
@@ -16,8 +17,8 @@ const Map = ({ coords, places, setCoords, setBounds, setChildClicked, weatherDat
     <div className={classes.mapContainer}>
       <GoogleMapReact
 
-        bootstrapURLKeys={{ key: 'AIzaSyCYX6bXntUc3j42EcBYQ7Q_iCpQOULNtfI'}}
-      // bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY}}
+      
+        bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY}}
         defaultCenter={coords}
         center={coords}
         defaultZoom={14}
