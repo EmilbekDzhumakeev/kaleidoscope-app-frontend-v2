@@ -31,6 +31,7 @@ const App = () => {
    const [newUserData, setNewUserData] = useState(null);
 
    const [logonData, setlogonData] = useState(null);
+   const [logonData2, setlogonData2] = useState(null);
    const [loggedIn, setLoggedIn] = useState(false);
   
    const [messageText, setMessageText] = useState('');
@@ -93,8 +94,10 @@ const getBookedTours = async (currentUser) => { currentUser &&
    }
 
 
-   const postUserLogin = async (email) => {
-      await axios.post(`${apiUserPath}/login`, email).then((res) => { setLoggedInUser(res.data); setCurrentUser(res.data); }).catch((err) => { console.log(err); });
+   const postUserLogin = async (email, password) => {
+      await axios.post(`${apiUserPath}/login`, email, password).then((res) => { setLoggedInUser(res.data); setCurrentUser(res.data); }).catch((err) => { console.log(err); });
+   console.log("april24 test password", password);
+   console.log("april24 test email", email);
    }
 
    const getPostings = async (currentTour) => {
@@ -135,8 +138,8 @@ const getBookedTours = async (currentUser) => { currentUser &&
 
 
    useEffect(() => {
-      postUserLogin(logonData);
-   }, [logonData])
+      postUserLogin(logonData,logonData2);
+   }, [logonData,logonData2])
 
    // get Tour COMMENT Posting Feed 
    useEffect(() => {
@@ -203,7 +206,8 @@ useEffect(() => {
             password: '',
          });
       } else {
-         setlogonData({ email: newUser.email })   // change triggers user login actions
+         setlogonData({email: newUser.email});  // change triggers user login actions
+         setlogonData2({password: newUser.password});
          setLoggedIn(true);
          setNewUser({
             name: '',
