@@ -18,7 +18,8 @@ const Footer = (props) => {
             <form onSubmit={(event) => { props.handleTourSubmit(event) }}>
                {/* form fields */}
                {props.registerTour && <input type='text' name='tTitle' placeholder='Tour Title' onChange={props.handleTourChange} value={ props.newTour.tTitle } />}<br />
-               <textarea type='text' name='description' placeholder='Description' required onChange={props.handleTourChange} value={ props.newTour.description } /><br />
+               <textarea type='text' name='description' placeholder='Description' required onChange={props.handleTourChange} value={ props.newTour.description } style={{width:'342px', height:'183px'}}
+               ></textarea><br />
                <input type='text' name='route' placeholder='City' required onChange={props.handleTourChange} value={props.newTour.route} />
                
                {/* login action bar */}
@@ -37,5 +38,4 @@ const Footer = (props) => {
 }
 
 export default Footer
-
 
