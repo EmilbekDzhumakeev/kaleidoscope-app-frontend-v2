@@ -159,16 +159,18 @@ const getBookedTours = async (currentUser) => { currentUser &&
    useEffect(() => {
       getTours(currentUser); 
       console.log('gettours')
-   }, [currentUser]) 
+   }, [currentUser, currentTour]) 
 
    useEffect(() => {
       getBookedTours(currentUser); 
+      
       console.log('getBookedtours')
-   }, [currentUser]) 
+   }, [currentUser, currentTour]) 
  
    ///////////////////////////////////////////////////////////////////////useEffect for footer
 useEffect(() => {
    postNewTour(newTourData);
+    
 }, [newTourData])
 
    /**********************************************************************************************************************************************

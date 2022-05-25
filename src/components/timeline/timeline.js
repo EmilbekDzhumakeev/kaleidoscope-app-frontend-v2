@@ -6,17 +6,27 @@ import axios from 'axios';
 
 const Timeline = (props) => {
 
-   const apiUserPath = 'http://localhost:5000/api/users';
-   const apiTourPath = 'http://localhost:5000/api/tours'; 
-   const apiBookedTourPath = 'http://localhost:5000/api/bookedTours';
+   const apiUserPath = 'http://localhost:8000/api/users';
+   const apiTourPath = 'http://localhost:8000/api/tours'; 
+   const apiBookedTourPath = 'http://localhost:8000/api/bookedTours';
 
-   const postNewBookedTour = async (currentTour) => {
+   /////////////////////////////////////////////////////////////test///////////////////////////////////////////////
+
+   const postNewBookedTour = async (currentUser,currentTour) => {
+      await axios.put(`${apiUserPath}/${currentUser._id}/${currentTour._id}/bookedTours`).then((res) => (res.data)).catch((err) => console.log(err));
       await axios.post(`${apiBookedTourPath}/${currentTour._id}`).then((res) => (res.data)).catch((err) => console.log(err));
    }
 
+
+   /////////////////////////////////////////////////////////////test///////////////////////////////////////////////
+
+   // const postNewBookedTour = async (currentTour) => {
+   //    await axios.post(`${apiBookedTourPath}/${currentTour._id}`).then((res) => (res.data)).catch((err) => console.log(err));
+   // }
+
    const handleBookingClick = () => {    // 
-      postNewBookedTour(props.currentTour);
-     
+      postNewBookedTour( props.currentUser,props.currentTour);
+      console.log(props.currentTour, props.currentUser);
    }
 
 
